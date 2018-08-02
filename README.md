@@ -24,12 +24,16 @@ current IETF & W3C standards defining JSON structures holding `BigInt` objects
  ### Making all BigInts serialize as "nnnnn"
  
  ```js
- BigInt.prototype.toJSON = function() { return this.toString(); }
+ BigInt.prototype.toJSON = function() { 
+   return this.toString(); 
+ }
  ```
  
  ### Making all BigInts serialize as Base64-encoded quoted strings
  
  ```js
  // Browser specific solution
- BigInt.prototype.toJSON = function() { return this.toString(); }
+ BigInt.prototype.toJSON = function() {
+   return window.btoa(this.getBytes(true));  // Not yet verified code...
+ }
  ```
