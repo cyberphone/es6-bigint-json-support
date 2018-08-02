@@ -13,35 +13,67 @@ current IETF & W3C standards defining JSON structures holding `BigInt` objects
 - The tc39 dismissal of the scheme used for `Date`
 - The availability of a `BigInt.prototype.toJSON()` option which greatly simplifies customized serialization
 
- ## Quoted String Serialization
- Although not the method suggested by the JSON RFC, there are quite few systems relying
- on `BigInt` objects being represented as JSON Strings.  Unfortunately this practice comes in many flavors
- making a standard solution out of reach, or at least not particularly useful. However, there is
- no real problem to solve either since _the JSON API as it stands can cope with any variant_.
+## Quoted String Serialization
+Although not the method suggested by the JSON RFC, there are quite few systems relying
+on `BigInt` objects being represented as JSON Strings.  Unfortunately this practice comes in many flavors
+making a standard solution out of reach, or at least not particularly useful. However, there is
+no real problem to solve either since _the JSON API as it stands can cope with any variant_.
  
- Here follows a few examples on how to deal with quoted string serialization for `BigInt`.
+Here follows a few examples on how to deal with quoted string serialization for `BigInt`.
  
- ### Make BigInt by default serialize as quoted strings
+### Make BigInt by default serialize as quoted strings
  
- ```js
- BigInt.prototype.toJSON = function() { 
-   return this.toString(); 
- }
+```js
+BigInt.prototype.toJSON = function() { 
+  return this.toString(); 
+}
  
- JSON.stringify({big: 555555555555555555555555555555n, small:55});
- ```
- Expected result: `'{"big":"555555555555555555555555555555","small":55}'`
+JSON.stringify({big: 555555555555555555555555555555n, small:55});
+```
+Expected result: `'{"big":"555555555555555555555555555555","small":55}'`
  
- ### Make BigInt by default serialize as Base64Url-encoded quoted strings
+### Make BigInt by default serialize as Base64Url-encoded quoted strings
  
- ```js
- // Browser specific solution
- BigInt.prototype.toJSON = function() {
-   return window.btoa(this.getBytes(true))  // Not yet verified code...
-      .replace(/\+/g,'-').replace(/\//g,'_');
- }
+```js
+// Browser specific solution
+BigInt.prototype.toJSON = function() {
+  return window.btoa(this.getBytes(true))  // Not yet verified code...
+    .replace(/\+/g,'-').replace(/\//g,'_');
+}
 
 JSON.stringify({big: 555555555555555555555555555555n, small:55});
  ```
- Expected result: `'{"big":"BwMYyOV8edmCI4444w","small":55}'`
+Expected result: `'{"big":"BwMYyOV8edmCI4444w","small":55}'`
+
+## Quoted String Deserialization
+
+Although not the method suggested by the JSON RFC, there are quite few systems relying
+on `BigInt` objects being represented as JSON Strings.  Unfortunately this practice comes in many flavors
+making a standard solution out of reach, or at least not particularly useful. However, there is
+no real problem to solve either since _the JSON API as it stands can cope with any variant_.
+ 
+Here follows a few examples on how to deal with quoted string serialization for `BigInt`.
+ 
+### Make BigInt by default serialize as quoted strings
+ 
+```js
+BigInt.prototype.toJSON = function() { 
+  return this.toString(); 
+}
+ 
+JSON.stringify({big: 555555555555555555555555555555n, small:55});
+```
+Expected result: `'{"big":"555555555555555555555555555555","small":55}'`
+ 
+### Make BigInt by default serialize as Base64Url-encoded quoted strings
+ 
+```js
+// Browser specific solution
+BigInt.prototype.toJSON = function() {
+  return window.btoa(this.getBytes(true))  // Not yet verified code...
+    .replace(/\+/g,'-').replace(/\//g,'_');
+}
+
+JSON.stringify({big: 555555555555555555555555555555n, small:55});
  ```
+Expected result: `'{"big":"BwMYyOV8edmCI4444w","small":55}'`
