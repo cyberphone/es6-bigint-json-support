@@ -1,8 +1,8 @@
 # Proposal for JSON support for BigInt in ES6
 _ES6 has recently been upgraded to support a native BigInt type. Currently there is
 no explict support for using BigInt with the ES JSON object.
-This document contains a proposal for extending the ES6 platform to support both JSON standard for numeric data
-as well as different current practices._
+This document contains a proposal for extending the ES6 platform to support BigInt both according to
+the JSON standard for numeric data, as well as existing practices relying on JSON strings._
 
 ## Default Mode
 The current ES6 implementation throws an exception if you try to serialize a `BigInt` using `JSON.stringify()`.  This specification _recommends keeping this behavior_ for numerous reasons including:
