@@ -7,7 +7,7 @@ the JSON standard for numeric data, as well as existing practices relying on JSO
 ## Default Mode
 The current ES6 implementation throws an exception if you try to serialize a `BigInt` using `JSON.stringify()`.  This specification _recommends keeping this behavior_ for numerous reasons including:
 - Quite _diverging views_ on what the "right" serialization solution is
-- Changing default serialization to use JSON Number gives unexpected/unwanted results
+- Changing default serialization to use JSON Number would give unexpected/unwanted results
 - Already _widely deployed_ systems using custom `BigInt` serialization (base64/hex), also including 
 current IETF & W3C standards defining JSON structures holding `BigInt` objects
 - The tc39 dismissal of the scheme used for `Date`
