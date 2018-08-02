@@ -38,7 +38,7 @@ current IETF & W3C standards defining JSON structures holding `BigInt` objects
  // Browser specific solution
  BigInt.prototype.toJSON = function() {
    return window.btoa(this.getBytes(true))  // Not yet verified code...
-      .replace(/\\+/g,'-').replace(/\\//g,'_');
+      .replace(/\+/g,'-').replace(/\//g,'_');
  }
 
 JSON.stringify({big: 555555555555555555555555555555n, small:55});
