@@ -11,7 +11,7 @@ The current ES6 implementation throws an exception if you try to serialize a `Bi
 - Already _widely deployed_ systems using custom `BigInt` serialization (base64/hex), also including 
 current IETF & W3C standards defining JSON structures holding `BigInt` objects
 - The tc39 dismissal of the scheme used for `Date`
-- The availability of a `toJSON()` option which greatly simplifies customized serialization
+- The availability of a `BigInt.toJSON()` option which greatly simplifies customized serialization
 
  ## Quoted String Serialization
  Although not the method suggested by the JSON RFC, there are quite few systems relying
