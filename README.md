@@ -19,4 +19,17 @@ current IETF & W3C standards defining JSON structures holding `BigInt` objects
  making a standard solution out of reach, or at least not particularly useful. However, there is
  no real problem to solve either since _the JSON API as it stands can cope with any variant_.
  
- Here follows a few examples on how to deal with quoted string serialization for `BigInt`. 
+ Here follows a few examples on how to deal with quoted string serialization for `BigInt`.
+ 
+ ### Making all BigInts serialize as "nnnnn"
+ 
+ ```js
+ BigInt.prototype.toJSON = function() { return this.toString(); }
+ ```
+ 
+ ### Making all BigInts serialize as Base64-encoded quoted strings
+ 
+ ```js
+ // Browser specific solution
+ BigInt.prototype.toJSON = function() { return this.toString(); }
+ ```
