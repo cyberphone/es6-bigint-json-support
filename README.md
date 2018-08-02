@@ -52,12 +52,12 @@ BigInt.prototype.toJSON = function() {
   let q = 0;
   while(q < hex.length) {
      let byte = (hex2bin(hex.charCodeAt(q++)) << 4) + hex2bin(hex.charCodeAt(q++));
-     if (q == 0) {
+     if (q == 2) {
        if (sign) {
-         mask = 128;
-         while (byte & mask == 0) {
+         let mask = 128;
+         while ((byte & mask) == 0) {
            byte |= mask;
-           byte >= 1;
+           mask >>>= 1;
          }
        } else {
          if (byte > 127) binary = String.fromCharCode(0);
