@@ -38,7 +38,7 @@ Expected result: `'{"big":"555555555555555555555555555555","small":55}'`
 // Browser specific solution
 BigInt.prototype.toJSON = function() {
   return window.btoa(this.getBytes(true))  // Not yet verified code...
-    .replace(/\+/g,'-').replace(/\//g,'_');
+    .replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'');
 }
 
 JSON.stringify({big: 555555555555555555555555555555n, small:55});
@@ -47,12 +47,12 @@ Expected result: `'{"big":"BwMYyOV8edmCI4444w","small":55}'`
 
 ## Quoted String Deserialization
 
-Although not the method suggested by the JSON RFC, there are quite few systems relying
-on `BigInt` objects being represented as JSON Strings.  Unfortunately this practice comes in many flavors
-making a standard solution out of reach, or at least not particularly useful. However, there is
-no real problem to solve either since _the JSON API as it stands can cope with any variant_.
+Since the is no generally accepted method for adding type information to data embedded in strings,
+deserialization (parsing) is effectively left to developers who must honor the "contract"
+used by the producer.  This is either performed through the `JSON.parse()` `reviver` option
+or performed after parsing has completed.
  
-Here follows a few examples on how to deal with quoted string serialization for `BigInt`.
+Here follows a few examples on how to deal with quoted string deserialization for `BigInt`.
  
 ### Make BigInt by default serialize as quoted strings
  
