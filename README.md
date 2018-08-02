@@ -37,7 +37,35 @@ Expected result: `'{"big":"555555555555555555555555555555","small":55}'`
 ```js
 // Browser specific solution
 BigInt.prototype.toJSON = function() {
-  return window.btoa(this.getBytes(true))  // Not yet verified code...
+  hex2bin = function(c) {
+    return c - (c < 58 ? 48 : 87);
+  };
+  let v = this.valueOf();
+  let sign = false;
+  if (v < 0) {
+    v = -v;
+    sign = true;
+  }
+  let hex = v.toString(16);
+  if (hex.length & 1) hex = '0' + hex;
+  let binary = '';
+  let q = 0;
+  while(q < hex.length) {
+     let byte = (hex2bin(hex.charCodeAt(q++)) << 4) + hex2bin(hex.charCodeAt(q++));
+     if (q == 0) {
+       if (sign) {
+         mask = 128;
+         while (byte & mask == 0) {
+           byte |= mask;
+           byte >= 1;
+         }
+       } else {
+         if (byte > 127) binary = String.fromCharCode(0);
+       }
+     }
+     binary += String.fromCharCode(byte);
+  }
+  return window.btoa(binary)  // Not yet verified code...
     .replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'');
 }
 
