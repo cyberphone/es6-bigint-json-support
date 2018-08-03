@@ -6,7 +6,7 @@ the JSON standard for numeric data, as well as existing practices relying on JSO
 Since JSON do not distinguish between different numbers (aka weakly typed), the described deserialization
 schemes all presume that a JSON consumer honors the "contract" including serialization method used by the producer._
 
-# Default Mode
+# 1 Default Mode
 The current ES6 implementation throws an exception if you try to serialize a `BigInt` using `JSON.stringify()`.  This specification _recommends keeping this behavior_ for numerous reasons including:
 - Quite _diverging views_ on what the "right" serialization solution is
 - Changing default serialization to use JSON Number would give unexpected/unwanted results
@@ -15,7 +15,7 @@ current IETF & W3C standards defining JSON structures holding `BigInt` objects
 - The tc39 dismissal of the scheme used for `Date`
 - The availability of a `BigInt.prototype.toJSON()` option which greatly simplifies customized serialization
 
-# RFC Mode
+# 2 RFC Mode
 
 RFC mode denotes the number serialization scheme specified by the [JSON](https://tools.ietf.org/html/rfc8259) RFC.
 
@@ -32,16 +32,16 @@ In the deserializing mode `JSONNumber`can also be used for verifying
 that a number actually has expected syntax (in the current `JSON.parse()`
 implementation there is no possibility distinguishing between `10` or `10.0`).
 
-# Quoted String Mode
+# 3 Quoted String Mode
 Although not the method suggested by the JSON RFC, there are quite few systems relying
 on `BigInt` objects being represented as JSON Strings.  Unfortunately this practice comes in many flavors
 making a standard solution out of reach, or at least not particularly useful. However, there is
 no real problem to solve either since _the JSON API as it stands can cope with any variant_.
  
-## Quoted String Serialization
+## 3.1 Quoted String Serialization
 Here follows a few examples on how to deal with quoted string serialization for `BigInt`.
  
-### Make BigInt by default serialize as decimal digits in quoted strings
+### 3.1.1 Make BigInt by default serialize as decimal digits in quoted strings
  
 ```js
 BigInt.prototype.toJSON = function() { 
@@ -52,7 +52,7 @@ JSON.stringify({big: 555555555555555555555555555555n, small:55});
 ```
 Expected result: `'{"big":"555555555555555555555555555555","small":55}'`
  
-### Make BigInt by default serialize as Base64Url-encoded data in quoted strings
+### 3.1.2 Make BigInt by default serialize as Base64Url-encoded data in quoted strings
  
 ```js
 // Browser specific solution
@@ -108,7 +108,7 @@ _Note: this code is lengthy, complex and potentially incorrect_. There should be
 a byte array in two-complement format like in Java:
 https://docs.oracle.com/javase/8/docs/api/java/math/BigInteger.html#toByteArray--
 
-## Quoted String Deserialization
+## 3.2 Quoted String Deserialization
 
 Since the is no generally accepted method for adding type information to data embedded in strings,
 the selection of encoding method is effectively left to the developers of the actual JSON
@@ -117,7 +117,7 @@ or performed after parsing has completed.
  
 Here follows a few examples on how to deal with quoted string deserialization for `BigInt`.
  
-### Deserialization of BigInt in quoted strings holding decimal digits
+### 3.2.1 Deserialization of BigInt in quoted strings holding decimal digits
  
 ```js
 JSON.parse('{"big":"55","small":55}', 
@@ -126,7 +126,7 @@ JSON.parse('{"big":"55","small":55}',
 ```
 Expected result: `{big: 55n, small: 55}`
  
-### Deserialization of BigInt serialize in quoted strings holding Base64Url-encoded data
+### 3.2.2 Deserialization of BigInt serialize in quoted strings holding Base64Url-encoded data
  
 ```js
 // Browser specific solution
