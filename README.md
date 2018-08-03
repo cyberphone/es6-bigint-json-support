@@ -14,8 +14,8 @@ The current ES6 implementation throws an exception if you try to serialize a `Bi
 - Changing default serialization to use JSON Number would give unexpected/unwanted results
 - _Widely deployed_ systems using custom `BigInt` serialization (base64/hex), also including 
 current IETF & W3C standards defining JSON structures holding `BigInt` objects
-- TC39's dismissal of the scheme used for `Date`
-- Vvailability of a `BigInt.prototype.toJSON()` option which greatly simplifies customized serialization
+- TC39's dismissal of the serialization scheme used for `Date`
+- Availability of a `BigInt.prototype.toJSON()` option which greatly simplifies customized serialization
 
 # 2 RFC Mode
 
@@ -23,8 +23,8 @@ RFC mode denotes the number serialization scheme specified by the [JSON](https:/
 
 ## 2.1 The <code>JSONNumber</code> Primitive
 This proposal builds on the introduction of a new primitive type called `JSONNumber` which is utilized both
-for serialization and deserialization. It is only a thin wrapper holding a string in proper
-JSON Number notation.  It is recognized by `typeof` as **"jsonnumber"**.
+for serialization and deserialization. `JSONNumber` is a thin wrapper holding a string in proper
+JSON Number notation.  The `typeof` operator recognizes `JSONNumber` as **"jsonnumber"**.
 
 To enable the new functionality
 `JSON.stringify()` must be updated to recognize `JSONNumber` as a valid data type which always serializes
@@ -37,7 +37,7 @@ implementation there is no possibility distinguishing between `10` or `10.0`).
 `JSONNumber` is intended to be usable "as is" with a future `BigNum` type,
 including when only supplied as a "polyfill".
 
-Programming interface:
+## 2.1.1 Interface
 <table>
   <tr><th>Method</th><th>Comment</th></tr>
   <tr><td><code>JSONNumber(</code><i>String</i><code>)</code></td><td>Constructor</td></tr>
