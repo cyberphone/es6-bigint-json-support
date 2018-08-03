@@ -48,24 +48,35 @@ BigInt.prototype.toJSON = function() {
   }
   let hex = v.toString(16);
   if (hex.length & 1) hex = '0' + hex;
-  let binary = '';
-  let q = 0;
-  while(q < hex.length) {
-     let byte = (hex2bin(hex.charCodeAt(q++)) << 4) + hex2bin(hex.charCodeAt(q++));
-     if (q == 2) {
-       if (sign) {
-         let mask = 128;
-         while ((byte & mask) == 0) {
-           byte |= mask;
-           mask >>>= 1;
-         }
+  let binary = new Uint8Array(hex.length / 2);
+  let i = binary.length;
+  let q = hex.length;
+  let carry = 1;
+  while(q > 0) {
+     let byte = hex2bin(hex.charCodeAt(--q)) + (hex2bin(hex.charCodeAt(--q)) << 4);
+     if (sign) {
+       byte = ~byte + carry;
+       if (byte > 255) {
+         carry = 1;
        } else {
-         if (byte > 127) binary = String.fromCharCode(0);
+         carry = 0;
        }
      }
-     binary += String.fromCharCode(byte);
+     binary[--i] = byte;
   }
-  return window.btoa(binary)  // Not yet verified code...
+  if (!sign && binary[0] > 127) {
+    let binp1 = new Uint8Array(binary.length + 1);
+    binp1[0] = 0;
+    for (q = 0; q < binary.length; q++) {
+      binp1[q + 1] = binary[q];
+    }
+    binary = binp1;
+  }
+  let text = '';
+  for (q = 0; q < binary.length; q++) {
+    text += String.fromCharCode(binary[q]);
+  }
+  return window.btoa(text)
     .replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'');
 }
 
