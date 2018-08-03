@@ -1,6 +1,6 @@
 # JSON support for BigInt in ES6
 _ES6 has recently been upgraded to support a native BigInt type. Currently there is
-no explict support for using BigInt with the ES JSON object.
+no explicit support for using BigInt with the ES JSON object.
 This document contains a proposal for extending the ES6 platform to support BigInt both according to
 the JSON standard for numeric data, as well as existing practices relying on JSON strings.
 Since JSON do not distinguish between different numbers (aka weakly typed), the described deserialization
@@ -20,7 +20,7 @@ current IETF & W3C standards defining JSON structures holding `BigInt` objects
 RFC mode denotes the number serialization scheme specified by the [JSON](https://tools.ietf.org/html/rfc8259) RFC.
 
 ## 2.1 JSONNumber Primitive
-This proposal builds on the introduction of a new primtive type called `JSONNumber` which is utilized both
+This proposal builds on the introduction of a new primitive type called `JSONNumber` which is utilized both
 for serialization and deserialization. It is only a thin wrapper holding a string in proper
 JSON Number notation.  It is recognized by `typeof` as **"jsonnumber"**.
 
@@ -28,7 +28,7 @@ To enable the new functionality
 `JSON.stringify()` must be updated to recognize `JSONNumber` as a valid data type which always serializes
 verbatim as a string but _without_ quotes.
 
-In the deserializing mode `JSONNumber`can also be used for verifying
+In the deserializing mode `JSONNumber` can also be used for verifying
 that a number actually has expected syntax (in the current `JSON.parse()`
 implementation there is no possibility distinguishing between `10` or `10.0`).
 
@@ -41,7 +41,7 @@ Programming interface:
   <tr><td><code>JSONNumber(</code><i>String</i><code>)</code></td><td>Constructor</td></tr>
   <tr><td><code>JSONNumber.prototype.toString()</code></td><td>Get current value</td></tr>
   <tr><td><code>JSONNumber.prototype.isInteger()</code></td><td>True for integer syntax</td></tr>
-  <tr><td><code>JSONNumber.prototype.isPostitve()</code></td><td>True for postive number</td></tr>
+  <tr><td><code>JSONNumber.prototype.isPostitve()</code></td><td>True for positive number</td></tr>
   <tr><td><code>JSONNumber.prototype.isNumber()</code></td><td>True if fitting an ES <code>Number</code></td></tr>
 </table>
 
