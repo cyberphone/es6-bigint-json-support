@@ -32,7 +32,7 @@ In the deserializing mode `JSONNumber` can also be used for verifying
 that a number actually has expected syntax (in the current `JSON.parse()`
 implementation there is no possibility distinguishing between `10` or `10.0`).
 
-JSONNumber is intended to be usable "as is" with a future `BigNum` type,
+`JSONNumber` is intended to be usable "as is" with a future `BigNum` type,
 including when only supplied as a "polyfill".
 
 Programming interface:
@@ -83,6 +83,16 @@ JSON.parse('{"big":555555555555555555555555555555,"small":55}',
 );
 ```
 Expected result: `{big: 555555555555555555555555555555n, small: 55}`
+
+### 2.2.3 Syntax Checking Deserialization
+Below is an example of a syntax checker using `JSONNumber`:
+```js
+JSON.parse('{"integer1":55,"integer2":10.0}', 
+  (k,v) => typeof v === 'jsonnumber' ? k == 'big' ? BigInt(v.toString()) : Number(v.toString()) : v,
+  true   // New flag to make all numbers be returned as JSONNumber
+);
+```
+Expected result: `{big: 55n, small: 55}`
 
 # 3 Quoted String Mode
 Although not the method suggested by the JSON RFC, there are quite few systems relying
