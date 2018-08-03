@@ -251,7 +251,7 @@ https://docs.oracle.com/javase/8/docs/api/java/math/BigInteger.html#BigInteger-b
 - Adding the `JSONNumber` primitive
 - Enhancing `JSON.stringify()` to always accept `JSONNumber` for serialization
 - Adding an optional flag to `JSON.parse()` requiring the parser process to return `JSONNumber` instead of `Number`
-- _Optional_ improving `BigInt` for dealing with two complement formats 
+- _Optionally_ improving `BigInt` for dealing with two complement serialization formats 
 
 ### Aknowledgements
 This specification was influenced by input from many persons including
