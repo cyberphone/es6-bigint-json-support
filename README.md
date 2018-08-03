@@ -84,6 +84,10 @@ JSON.stringify({big: 555555555555555555555555555555n, small:55});
  ```
 Expected result: `'{"big":"BwMYyOV8edmCI4444w","small":55}'`
 
+_Note: this code is lengthy, complex and potentially incorrect_. There should be a `BigInt` method returning
+a byte array in two-complement format like in Java:
+https://docs.oracle.com/javase/8/docs/api/java/math/BigInteger.html#toByteArray--
+
 ## Quoted String Deserialization
 
 Since the is no generally accepted method for adding type information to data embedded in strings,
