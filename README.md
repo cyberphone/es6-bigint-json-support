@@ -21,8 +21,16 @@ RFC mode denotes the number serialization scheme specified by the [JSON](https:/
 
 ## JSONNumber Primitive
 This proposal builds on the introduction of a new primtive type called `JSONNumber` which is utilized both
-for serialization and deserialization. It is essentially only a thin wrapper holding a string in proper
+for serialization and deserialization. It is only a thin wrapper holding a string in proper
 JSON Number notation.  It is recognized by `typeof` as **"jsonnumber"**.
+
+To enable the new functionality
+`JSON.stringify()` must be updated to recognize `JSONNumber` as a valid data type which always serializes
+verbatim as a string but _without_ quotes.
+
+In the deserializing mode `JSONNumber`can also be used for verifying
+that a number actually has expected syntax (in the current `JSON.parse()`
+implementation there is no possibility distinguishing between `10` or `10.0`).
 
 # Quoted String Mode
 Although not the method suggested by the JSON RFC, there are quite few systems relying
