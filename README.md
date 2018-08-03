@@ -32,6 +32,15 @@ In the deserializing mode `JSONNumber`can also be used for verifying
 that a number actually has expected syntax (in the current `JSON.parse()`
 implementation there is no possibility distinguishing between `10` or `10.0`).
 
+JSONNumber is intended to be usable "as is" with a future `BigNum` type,
+including when only supplied as a "polyfill".
+
+Programming interface:
+<table>
+  <tr><th>Constructor</th><td><code>JSONNumber(String)</code></td><td>Initialize JSONNumber</td></tr>
+<tr><th>Method</th><td><code>toString()</code></td><td>Get current value</td></tr>
+</table>
+
 ## 2.1 RFC Mode Serialization
 The following code shows how RFC mode `BigInt` serialization can be added
 to `JSON.stringify`.
@@ -43,6 +52,20 @@ BigInt.prototype.toJSON = function() {
 JSON.stringify({big: 555555555555555555555555555555n, small:55});
 ```
 Expected result: `'{"big":555555555555555555555555555555,"small":55}'`
+
+## 2.2 RFC Mode Dserialization
+Deserialization of BigInt cannot be automated like serialization,
+it depends on an agreement between the consumer and the producer.
+This is either performed through the `JSON.parse()` `reviver` option
+or is performed after parsing has completed.
+Below is an example of a very simple contract:
+```js
+JSON.parse('{"big":55,"small":55}', 
+  (k,v) => typeof v === 'jsonnumber' ? k == 'big' ? BigInt(v.toString()) : Number(v.toString()) : v,
+  true   // New flag to make all numbers be returned as JSONNumber
+);
+```
+Expected result: `{big: 55n, small: 55}`
 
 # 3 Quoted String Mode
 Although not the method suggested by the JSON RFC, there are quite few systems relying
