@@ -39,10 +39,10 @@ Programming interface:
 <table>
   <tr><th>Method</th><th>Comment</th></tr>
   <tr><td><code>JSONNumber(</code><i>String</i><code>)</code></td><td>Constructor</td></tr>
-  <tr><td><code>toString()</code></td><td>Get current value</td></tr>
-  <tr><td><code>isInteger()</code></td><td>True for integer syntax</td></tr>
-  <tr><td><code>isPostitve()</code></td><td>True for postive number</td></tr>
-  <tr><td><code>isNumber()</code></td><td>True if fitting an ES <code>Number</code></td></tr>
+  <tr><td><code>JSONNumber.prototype.toString()</code></td><td>Get current value</td></tr>
+  <tr><td><code>JSONNumber.prototype.isInteger()</code></td><td>True for integer syntax</td></tr>
+  <tr><td><code>JSONNumber.prototype.isPostitve()</code></td><td>True for postive number</td></tr>
+  <tr><td><code>JSONNumber.prototype.isNumber()</code></td><td>True if fitting an ES <code>Number</code></td></tr>
 </table>
 
 ## 2.1 RFC Mode Serialization
