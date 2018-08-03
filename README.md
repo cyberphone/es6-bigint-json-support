@@ -93,7 +93,7 @@ no real problem to solve either since _the JSON API as it stands can cope with a
 ## 3.1 Quoted String Serialization
 Here follows a few examples on how to deal with quoted string serialization for `BigInt`.
  
-### 3.1.1 Make BigInt by default serialize as decimal digits in quoted strings
+### 3.1.1 Serialization Using Decimal Digits
  
 ```js
 BigInt.prototype.toJSON = function() { 
@@ -104,7 +104,7 @@ JSON.stringify({big: 555555555555555555555555555555n, small:55});
 ```
 Expected result: `'{"big":"555555555555555555555555555555","small":55}'`
  
-### 3.1.2 Make BigInt by default serialize as Base64Url-encoded data in quoted strings
+### 3.1.2 Serialization Using Base64Url Encoded Data
  
 ```js
 // Browser specific solution
@@ -169,7 +169,7 @@ or is performed after parsing has completed.
  
 Here follows a few examples on how to deal with quoted string deserialization for `BigInt`.
  
-### 3.2.1 Deserialization of BigInt in quoted strings holding decimal digits
+### 3.2.1 Deserialization Using Decimal Digits
  
 ```js
 JSON.parse('{"big":"55","small":55}', 
@@ -178,7 +178,7 @@ JSON.parse('{"big":"55","small":55}',
 ```
 Expected result: `{big: 55n, small: 55}`
  
-### 3.2.2 Deserialization of BigInt serialize in quoted strings holding Base64Url-encoded data
+### 3.2.2 Deserialization Using Base64Url Encoded Data
  
 ```js
 // Browser specific solution
