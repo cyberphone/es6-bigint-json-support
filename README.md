@@ -32,7 +32,7 @@ JSON.stringify({big: 555555555555555555555555555555n, small:55});
 ```
 Expected result: `'{"big":"555555555555555555555555555555","small":55}'`
  
-### Make BigInt by default serialize as Base64Url-encoded quoted strings
+### Make BigInt by default serialize as Base64Url-encoded data in quoted strings
  
 ```js
 // Browser specific solution
@@ -106,15 +106,45 @@ JSON.parse('{"big":"55","small":55}',
 ```
 Expected result: `{big: 55n, small: 55}`
  
-### Make BigInt by default serialize as Base64Url-encoded quoted strings
+### Deserialization of BigInt serialize in quoted strings holding Base64Url-encoded data
  
 ```js
 // Browser specific solution
-BigInt.prototype.toJSON = function() {
-  return window.btoa(this.getBytes(true))  // Not yet verified code...
-    .replace(/\+/g,'-').replace(/\//g,'_');
+function base64Url2BigInt (b64) {
+  let dec = window.atob(b64.replace(/\-/g,'+').replace(/_/g,'/').replace(/=/g,'?'));
+  let binary = new Uint8Array(dec.length);
+  for (let q = 0; q < binary.length; q++) {
+    binary[q] = dec.charCodeAt(q);
+  }
+  let sign = false;
+  if (binary[0] > 127) {
+    sign = true;
+    let carry = 1;
+    let q = binary.length; 
+    while (q > 0) {
+      let byte = ~binary[--q] + carry;
+      binary[q] = byte;
+      if (byte > 255) {
+        carry = 1;
+      } else {
+        carry = 0;
+      }
+    }
+  }
+  let v = BigInt(0n);
+  for (let q = 0; q < binary.length; q++) {
+    v *= 256n;
+    v += BigInt(binary[q]);
+  }
+  if (sign) {
+     return -v;
+  }
+  return v;
 }
 
-JSON.stringify({big: 555555555555555555555555555555n, small:55});
- ```
-Expected result: `'{"big":"BwMYyOV8edmCI4444w","small":55}'`
+JSON.parse('{"big":"BwMYyOV8edmCI4444w","small":55}', 
+  (k,v) => k == 'big' ? base64Url2BigInt(v) : v
+);
+
+```
+Expected result: `{big: 555555555555555555555555555555n, small: 55}`
