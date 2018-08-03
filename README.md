@@ -244,3 +244,14 @@ Expected result: `{big: 555555555555555555555555555555n, small: 55}`
 **NOTE:** _This code is lengthy, complex and potentially incorrect_. There should be a method
 for creating a `BigInt` value from a byte array in two-complement format like in Java:
 https://docs.oracle.com/javase/8/docs/api/java/math/BigInteger.html#BigInteger-byte:A-
+
+# Summary Of Changes
+- Introduction of the `JSONNumber` primitive
+- Enhancing `JSON.stringify()` to serialize `JSONNumber`
+- Adding an optional flag to `JSON.parse()` requiring the parser process to return `JSONNumber` instead of `Number`
+- _Optional_ improvements in `BigInt` for dealing with two complement formats 
+
+### Aknowledgements
+This specification was influenced by input from many persons including
+Richard Gibson, Kai Zhu, jordan Harband, Rob Ede, T.J. Crowder, Daniel Ehrenberg,
+Michael Theriot, Claude Pache, Ranando King, J Decker and Isiah Meadows
