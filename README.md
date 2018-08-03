@@ -256,7 +256,8 @@ https://docs.oracle.com/javase/8/docs/api/java/math/BigInteger.html#BigInteger-b
 ### Aknowledgements
 This specification was influenced by input from many persons including
 Richard Gibson, Kai Zhu, Jordan Harband, Rob Ede, T.J. Crowder, Daniel Ehrenberg,
-Michael Theriot, Claude Pache, Ranando King, J Decker and Isiah Meadows.
+Michael Theriot, Claude Pache, Ranando King, J Decker, Kevin Gibbons,
+Claude Petit and Isiah Meadows.
 
 ### Current Version
 0.1
