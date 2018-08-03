@@ -1,6 +1,6 @@
 # JSON support for BigInt in ES6
 _ES6 has recently been upgraded to support a native BigInt type. Currently there is
-no explicit support for using BigInt with the ES JSON object.
+no explicit support for using BigInt with the ES6 JSON object.
 This document contains a proposal for extending the ES6 platform to support BigInt both according to
 the JSON standard for numeric data, as well as existing practices relying on JSON strings.
 Since JSON do not distinguish between different numbers (aka weakly typed), the described deserialization
@@ -8,12 +8,12 @@ schemes all presume that a JSON consumer honors the "contract" including seriali
 
 # 1 Default Mode
 The current ES6 implementation throws an exception if you try to serialize a `BigInt` using `JSON.stringify()`.  This specification _recommends keeping this behavior_ for numerous reasons including:
-- Quite _diverging views_ on what the "right" serialization solution is
+- _Diverging views_ on what the "right" serialization solution is
 - Changing default serialization to use JSON Number would give unexpected/unwanted results
-- Already _widely deployed_ systems using custom `BigInt` serialization (base64/hex), also including 
+- _Widely deployed_ systems using custom `BigInt` serialization (base64/hex), also including 
 current IETF & W3C standards defining JSON structures holding `BigInt` objects
-- The tc39 dismissal of the scheme used for `Date`
-- The availability of a `BigInt.prototype.toJSON()` option which greatly simplifies customized serialization
+- TC39's dismissal of the scheme used for `Date`
+- Vvailability of a `BigInt.prototype.toJSON()` option which greatly simplifies customized serialization
 
 # 2 RFC Mode
 
