@@ -15,6 +15,8 @@ current IETF & W3C standards defining JSON structures holding `BigInt` objects
 
 # RFC Mode
 
+RFC mode denotes the number serialization scheme specified by the [JSON](https://tools.ietf.org/html/rfc8259) RFC.
+
 ## JSONNumber Primitive
 This proposal builds on the introduction of a new primtive type called `JSONNumber` which is utilized both
 for serialization and deserialization. It is essentially only a thin wrapper holding a string in proper
