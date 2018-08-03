@@ -37,7 +37,7 @@ implementation there is no possibility distinguishing between `10` or `10.0`).
 `JSONNumber` is intended to be usable "as is" with a future `BigNum` type,
 including when only supplied as a "polyfill".
 
-## 2.1.1 Interface
+### 2.1.1 Interface
 <table>
   <tr><th>Method</th><th>Comment</th></tr>
   <tr><td><code>JSONNumber(</code><i>String</i><code>)</code></td><td>Constructor</td></tr>
