@@ -57,12 +57,15 @@ JSON.stringify({big: 555555555555555555555555555555n, small:55});
 ```
 Expected result: `'{"big":555555555555555555555555555555,"small":55}'`
 
-## 2.2 RFC Mode Dserialization
-Deserialization of BigInt cannot be automated like serialization,
-it depends on an agreement between the consumer and the producer.
-This is either performed through the `JSON.parse()` `reviver` option
+## 2.2 RFC Mode Deserialization
+Deserialization of `BigInt` cannot be automated like serialization;
+the selection between `Number` and `BigInt` usually
+depends on an agreement between the consumer and the producer.
+The selection is either managed through the `JSON.parse()` `reviver` option
 or is performed after parsing has completed.
-Below is an example of a very simple contract:
+
+### 2.2.1 Property Based Deserialization Selection
+Below is an example of a very simple contract having a single property holding a `BigInt`:
 ```js
 JSON.parse('{"big":55,"small":55}', 
   (k,v) => typeof v === 'jsonnumber' ? k == 'big' ? BigInt(v.toString()) : Number(v.toString()) : v,
@@ -70,6 +73,16 @@ JSON.parse('{"big":55,"small":55}',
 );
 ```
 Expected result: `{big: 55n, small: 55}`
+
+### 2.2.2 Value Based Deserialization Selection
+Below is an example where the actual value of an object is used for type selection:
+```js
+JSON.parse('{"big":555555555555555555555555555555,"small":55}', 
+  (k,v) => typeof v === 'jsonnumber' ? v.isNumber() ? Number(v.toString()) : BigInt(v.toString()) : v,
+  true   // New flag to make all numbers be returned as JSONNumber
+);
+```
+Expected result: `{big: 555555555555555555555555555555n, small: 55}`
 
 # 3 Quoted String Mode
 Although not the method suggested by the JSON RFC, there are quite few systems relying
@@ -151,8 +164,8 @@ https://docs.oracle.com/javase/8/docs/api/java/math/BigInteger.html#toByteArray-
 
 Since the is no generally accepted method for adding type information to data embedded in strings,
 the selection of encoding method is effectively left to the developers of the actual JSON
-ecosystem.  This is either performed through the `JSON.parse()` `reviver` option
-or performed after parsing has completed.
+ecosystem.  The selection is either managed through the `JSON.parse()` `reviver` option
+or is performed after parsing has completed.
  
 Here follows a few examples on how to deal with quoted string deserialization for `BigInt`.
  
