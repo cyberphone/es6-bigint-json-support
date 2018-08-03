@@ -2,7 +2,9 @@
 _ES6 has recently been upgraded to support a native BigInt type. Currently there is
 no explict support for using BigInt with the ES JSON object.
 This document contains a proposal for extending the ES6 platform to support BigInt both according to
-the JSON standard for numeric data, as well as existing practices relying on JSON strings._
+the JSON standard for numeric data, as well as existing practices relying on JSON strings.
+Since JSON do not distinguish between different numbers (aka weakly typed), the described deserialization
+schemes all presume that a JSON consumer honors the "contract" including serialization method used by the producer._
 
 # Default Mode
 The current ES6 implementation throws an exception if you try to serialize a `BigInt` using `JSON.stringify()`.  This specification _recommends keeping this behavior_ for numerous reasons including:
@@ -101,8 +103,8 @@ https://docs.oracle.com/javase/8/docs/api/java/math/BigInteger.html#toByteArray-
 ## Quoted String Deserialization
 
 Since the is no generally accepted method for adding type information to data embedded in strings,
-deserialization (parsing) is effectively left to developers who must honor the "contract"
-used by the producer.  This is either performed through the `JSON.parse()` `reviver` option
+the selection of encoding method is effectively left to the developers of the actual JSON
+ecosystem.  This is either performed through the `JSON.parse()` `reviver` option
 or performed after parsing has completed.
  
 Here follows a few examples on how to deal with quoted string deserialization for `BigInt`.
