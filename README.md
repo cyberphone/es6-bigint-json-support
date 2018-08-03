@@ -6,7 +6,7 @@ the JSON standard for numeric data, as well as existing practices relying on JSO
 Since JSON do not distinguish between different numbers (aka weakly typed), the described deserialization
 schemes all presume that a JSON consumer honors the "contract" including serialization method used by the producer._
 
-See [summary of changes](#summary-of-changes).
+Also see [summary of changes](#summary-of-changes).
 
 # 1 Default Mode
 The current ES6 implementation throws an exception if you try to serialize a `BigInt` using `JSON.stringify()`.  This specification _recommends keeping this behavior_ for numerous reasons including:
@@ -248,10 +248,10 @@ for creating a `BigInt` value from a byte array in two-complement format like in
 https://docs.oracle.com/javase/8/docs/api/java/math/BigInteger.html#BigInteger-byte:A-
 
 # Summary Of Changes
-- Introduction of the `JSONNumber` primitive
-- Enhancing `JSON.stringify()` to serialize `JSONNumber`
+- Adding the `JSONNumber` primitive
+- Enhancing `JSON.stringify()` to always serialize `JSONNumber`
 - Adding an optional flag to `JSON.parse()` requiring the parser process to return `JSONNumber` instead of `Number`
-- _Optional_ improvements in `BigInt` for dealing with two complement formats 
+- _Optional_ improving `BigInt` for dealing with two complement formats 
 
 ### Aknowledgements
 This specification was influenced by input from many persons including
