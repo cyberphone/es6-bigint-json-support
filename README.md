@@ -87,12 +87,20 @@ Expected result: `{big: 555555555555555555555555555555n, small: 55}`
 ### 2.2.3 Syntax Checking Deserialization
 Below is an example of a syntax checker using `JSONNumber`:
 ```js
-JSON.parse('{"integer1":55,"integer2":10.0}', 
-  (k,v) => typeof v === 'jsonnumber' ? k == 'big' ? BigInt(v.toString()) : Number(v.toString()) : v,
+JSON.parse('{"int1":55,"int2":10.0}', 
+  (k,v) => {
+     if (typeof v === 'jsonnumber') {
+       if (!v.isInteger()) {
+         throw new Error('Not integer: ' + k);
+       }
+       return Number(v.toString());
+     }
+     return v;
+  },
   true   // New flag to make all numbers be returned as JSONNumber
 );
 ```
-Expected result: `{big: 55n, small: 55}`
+Expected result: An error message containing the name `int2`;
 
 # 3 Quoted String Mode
 Although not the method suggested by the JSON RFC, there are quite few systems relying
