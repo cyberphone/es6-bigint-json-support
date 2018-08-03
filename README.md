@@ -64,7 +64,7 @@ depends on an agreement between the consumer and the producer.
 The selection is either managed through the `JSON.parse()` `reviver` option
 or is performed after parsing has completed.
 
-Note that RFC mode deserialization requires a new flag to `JSON.parse()`.
+**Note:** The RFC mode deserialization requires a new flag to `JSON.parse()`.
 
 ### 2.2.1 Property Based Deserialization Selection
 Below is an example of a very simple contract having a single property holding a `BigInt`:
@@ -176,7 +176,7 @@ JSON.stringify({big: 555555555555555555555555555555n, small:55});
  ```
 Expected result: `'{"big":"BwMYyOV8edmCI4444w","small":55}'`
 
-_Note: this code is lengthy, complex and potentially incorrect_. There should be a `BigInt` method returning
+**NOTE:** _This code is lengthy, complex and potentially incorrect_. There should be a `BigInt` method returning
 a byte array in two-complement format like in Java:
 https://docs.oracle.com/javase/8/docs/api/java/math/BigInteger.html#toByteArray--
 
@@ -241,6 +241,6 @@ JSON.parse('{"big":"BwMYyOV8edmCI4444w","small":55}',
 ```
 Expected result: `{big: 555555555555555555555555555555n, small: 55}`
 
-_Note: this code is lengthy, complex and potentially incorrect_. There should be a `BigInt` method returning
-for creating a value from a byte array in two-complement format like in Java:
+**NOTE:** _This code is lengthy, complex and potentially incorrect_. There should be a method
+for creating a `BigInt` value from a byte array in two-complement format like in Java:
 https://docs.oracle.com/javase/8/docs/api/java/math/BigInteger.html#BigInteger-byte:A-
