@@ -64,6 +64,8 @@ depends on an agreement between the consumer and the producer.
 The selection is either managed through the `JSON.parse()` `reviver` option
 or is performed after parsing has completed.
 
+Note that RFC mode deserialization requires a new flag to `JSON.parse()`.
+
 ### 2.2.1 Property Based Deserialization Selection
 Below is an example of a very simple contract having a single property holding a `BigInt`:
 ```js
