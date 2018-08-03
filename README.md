@@ -62,9 +62,9 @@ Expected result: `'{"big":555555555555555555555555555555,"small":55}'`
 ## 2.2 RFC Mode Deserialization
 Deserialization of `BigInt` cannot be automated like serialization;
 the selection between different number types usually
-depends on an agreement between the consumer and the producer.
-The selection is either managed through the `JSON.parse()` `reviver` option
-or is performed after parsing has completed.
+depends on conventions between JSON consumers and producers.
+The selections are either managed through the `JSON.parse()` `reviver` option
+or are performed after parsing has completed.
 
 **Note:** The RFC mode deserialization requires a new flag to `JSON.parse()`.
 
@@ -186,8 +186,8 @@ https://docs.oracle.com/javase/8/docs/api/java/math/BigInteger.html#toByteArray-
 
 Since the is no generally accepted method for adding type information to data embedded in strings,
 the selection of encoding method is effectively left to the developers of the actual JSON
-ecosystem.  The selection is either managed through the `JSON.parse()` `reviver` option
-or is performed after parsing has completed.
+ecosystem.  The selections are either managed through the `JSON.parse()` `reviver` option
+or are performed after parsing has completed.
  
 Here follows a few examples on how to deal with quoted string deserialization for `BigInt`.
  
