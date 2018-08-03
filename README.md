@@ -6,6 +6,8 @@ the JSON standard for numeric data, as well as existing practices relying on JSO
 Since JSON do not distinguish between different numbers (aka weakly typed), the described deserialization
 schemes all presume that a JSON consumer honors the "contract" including serialization method used by the producer._
 
+See [summary of changes](#summary-of-changes).
+
 # 1 Default Mode
 The current ES6 implementation throws an exception if you try to serialize a `BigInt` using `JSON.stringify()`.  This specification _recommends keeping this behavior_ for numerous reasons including:
 - _Diverging views_ on what the "right" serialization solution is
