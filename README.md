@@ -13,6 +13,13 @@ current IETF & W3C standards defining JSON structures holding `BigInt` objects
 - The tc39 dismissal of the scheme used for `Date`
 - The availability of a `BigInt.prototype.toJSON()` option which greatly simplifies customized serialization
 
+## RFC Mode Serialization
+
+### JSONNumber Primitive
+This proposal builds on the introduction of a new primtive type called `JSONNumber` which is utilized both
+for serialization and deserialization. It is essentially only a thin wrapper holding a string in proper
+JSON Number notation.  It is recognized by `typeof` as **"jsonnumber"**.
+
 ## Quoted String Serialization
 Although not the method suggested by the JSON RFC, there are quite few systems relying
 on `BigInt` objects being represented as JSON Strings.  Unfortunately this practice comes in many flavors
