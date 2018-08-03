@@ -21,7 +21,7 @@ no real problem to solve either since _the JSON API as it stands can cope with a
  
 Here follows a few examples on how to deal with quoted string serialization for `BigInt`.
  
-### Make BigInt by default serialize as quoted strings
+### Make BigInt by default serialize as decimal digits in quoted strings
  
 ```js
 BigInt.prototype.toJSON = function() { 
@@ -97,16 +97,14 @@ or performed after parsing has completed.
  
 Here follows a few examples on how to deal with quoted string deserialization for `BigInt`.
  
-### Make BigInt by default serialize as quoted strings
+### Deserialization of BigInt in quoted strings holding decimal digits
  
 ```js
-BigInt.prototype.toJSON = function() { 
-  return this.toString(); 
-}
- 
-JSON.stringify({big: 555555555555555555555555555555n, small:55});
+JSON.parse('{"big":"55","small":55}', 
+  (k,v) => k == 'big' ? BigInt(v) : v
+);
 ```
-Expected result: `'{"big":"555555555555555555555555555555","small":55}'`
+Expected result: `{big: 55n, small: 55}`
  
 ### Make BigInt by default serialize as Base64Url-encoded quoted strings
  
