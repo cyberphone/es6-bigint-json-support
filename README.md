@@ -19,7 +19,7 @@ current IETF & W3C standards defining JSON structures holding `BigInt` objects
 
 RFC mode denotes the number serialization scheme specified by the [JSON](https://tools.ietf.org/html/rfc8259) RFC.
 
-## JSONNumber Primitive
+## 2.1 JSONNumber Primitive
 This proposal builds on the introduction of a new primtive type called `JSONNumber` which is utilized both
 for serialization and deserialization. It is only a thin wrapper holding a string in proper
 JSON Number notation.  It is recognized by `typeof` as **"jsonnumber"**.
@@ -31,6 +31,18 @@ verbatim as a string but _without_ quotes.
 In the deserializing mode `JSONNumber`can also be used for verifying
 that a number actually has expected syntax (in the current `JSON.parse()`
 implementation there is no possibility distinguishing between `10` or `10.0`).
+
+## 2.1 RFC Mode Serialization
+The following code shows how RFC mode `BigInt` serialization can be added
+to `JSON.stringify`.
+```js
+BigInt.prototype.toJSON = function() { 
+  return JSONNumber(this.toString()); 
+}
+ 
+JSON.stringify({big: 555555555555555555555555555555n, small:55});
+```
+Expected result: `'{"big":555555555555555555555555555555,"small":55}'`
 
 # 3 Quoted String Mode
 Although not the method suggested by the JSON RFC, there are quite few systems relying
