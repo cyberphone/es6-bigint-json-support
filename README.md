@@ -74,7 +74,7 @@ depends on conventions between JSON consumers and producers.
 The selections are either managed through the `JSON.parse()` `reviver` option
 or are performed after parsing has completed.
 
-**NOTE:** RFC mode deserialization requires a new flag to `JSON.parse()`.  When this flag is set to **true**,
+**NOTE:** RFC mode deserialization requires a new _optional_ flag to `JSON.parse()`.  When this flag is set to **true**,
 JSON Number elements must only be parsed for correctness with respect to syntax, and the
 parsed string itself be returned in a `JSONNumber` for application level processing.
 
