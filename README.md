@@ -45,9 +45,9 @@ including when only supplied as a "polyfill".
     supposed to already<br>
     be in proper JSON Number notation</td></tr>
   <tr><td><code>JSONNumber.prototype.toString()</code></td><td>Get current value</td></tr>
-  <tr><td><code>JSONNumber.prototype.isInteger()</code></td><td>True for integer syntax</td></tr>
-  <tr><td><code>JSONNumber.prototype.isPositive()</code></td><td>True for positive number</td></tr>
-  <tr><td><code>JSONNumber.prototype.isNumber()</code></td><td>True if fitting an in ES <code>Number</code></td></tr>
+  <tr><td><code>JSONNumber.prototype.isInteger()</code></td><td>Return <b>true</b> for integer syntax</td></tr>
+  <tr><td><code>JSONNumber.prototype.isPositive()</code></td><td>Return <b>true</b> for positive number</td></tr>
+  <tr><td><code>JSONNumber.prototype.isNumber()</code></td><td>Return <b>true</b> if fitting an in ES <code>Number</code></td></tr>
 </table>
 
 _Question_: Since `JSONNumber` does not seem to have any logical use outside of the ES6 `JSON`object, would
