@@ -120,7 +120,7 @@ Expected result: An error message containing the name `int2`;
 Although not the method suggested by the JSON RFC, there are quite few systems relying
 on `BigInt` objects being represented as JSON Strings.  Unfortunately this practice comes in many flavors
 making a standard solution out of reach, or at least not particularly useful. However, there is
-no real problem to solve either since _the JSON API as it stands can cope with any variant_.
+no real problem to solve either since _the ES6 JSON API as it stands can cope with any variant_.
  
 ## 3.1 Quoted String Serialization
 Here follows a few examples on how to deal with quoted string serialization for `BigInt`.
