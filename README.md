@@ -59,6 +59,8 @@ JSON.stringify({big: 555555555555555555555555555555n, small:55});
 ```
 Expected result: `'{"big":555555555555555555555555555555,"small":55}'`
 
+**NOTE:** RFC mode support requires `JSON.stringify()` to be upgraded to accept `JSONNumber` as a serializable object.
+
 ## 2.2 RFC Mode Deserialization
 Deserialization of `BigInt` cannot be automated like serialization;
 the selection between different number types usually
