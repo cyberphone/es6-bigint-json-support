@@ -69,7 +69,7 @@ or are performed after parsing has completed.
 **Note:** The RFC mode deserialization requires a new flag to `JSON.parse()`.
 
 ### 2.2.1 Property Based Deserialization Selection
-Below is an example of a very simple contract having a single property holding a `BigInt`:
+Below is an example of a scheme having a single property holding a `BigInt`:
 ```js
 JSON.parse('{"big":55,"small":55}', 
   (k,v) => typeof v === 'jsonnumber' ? k == 'big' ? BigInt(v.toString()) : Number(v.toString()) : v,
