@@ -42,12 +42,12 @@ including when only supplied as a "polyfill".
 <table>
   <tr><th>Method</th><th>Comment</th></tr>
   <tr><td><code>JSONNumber(</code><i>string</i><code>)</code></td><td>Constructor.  The <i>string</i> argument is
-    supposed to already be in proper JSON Number notation</td></tr>
-  <tr><td><code>JSONNumber.prototype.toString()</code></td><td>Return <i>string</i> value</td></tr>
-  <tr><td><code>JSONNumber.prototype.isInteger()</code></td><td>Return <b>true</b> for integer syntax
+    supposed to already be in proper JSON&nbsp;Number notation</td></tr>
+  <tr><td><code>JSONNumber.prototype.toString()</code></td><td>Returns <i>string</i> value</td></tr>
+  <tr><td><code>JSONNumber.prototype.isInteger()</code></td><td>Returns <b>true</b> for integer syntax
     (=<i>string</i> contains no decimal point or exponent)</td></tr>
-  <tr><td><code>JSONNumber.prototype.isPositive()</code></td><td>Return <b>true</b> for positive numbers</td></tr>
-  <tr><td><code>JSONNumber.prototype.isNumber()</code></td><td>Return <b>true</b> if a converted <i>string</i> would fit in an ES <code>Number</code></td></tr>
+  <tr><td><code>JSONNumber.prototype.isPositive()</code></td><td>Returns <b>true</b> for positive numbers</td></tr>
+  <tr><td><code>JSONNumber.prototype.isNumber()</code></td><td>Returns <b>true</b> if a converted <i>string</i> would fit in an ES <code>Number</code></td></tr>
 </table>
 
 _Question_: Since `JSONNumber` does not seem to have any logical use outside of the ES6 `JSON`object, would
