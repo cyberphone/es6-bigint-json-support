@@ -12,7 +12,7 @@ Also see [summary of changes](#summary-of-changes).
 The current ES6 implementation throws an exception if you try to serialize a `BigInt` using `JSON.stringify()`.  This specification _recommends keeping this behavior_ for numerous reasons including:
 - _Diverging views_ on what the "right" serialization solution is
 - Changing default serialization to use JSON Number would give unexpected/unwanted results
-- _Widely deployed_ systems using custom `BigInt` serialization (base64/hex), also including 
+- _Widely deployed_ systems relying on custom `BigInt` serialization (base64/hex), also including 
 current IETF & W3C standards defining JSON structures holding `BigInt` objects
 - TC39's dismissal of the serialization scheme used for `Date`
 - Availability of a `BigInt.prototype.toJSON()` option which greatly simplifies customized serialization
