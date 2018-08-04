@@ -68,7 +68,7 @@ depends on conventions between JSON consumers and producers.
 The selections are either managed through the `JSON.parse()` `reviver` option
 or are performed after parsing has completed.
 
-**NOTE:** The RFC mode deserialization requires a new flag to `JSON.parse()`.
+**NOTE:** RFC mode deserialization requires a new flag to `JSON.parse()`.
 
 ### 2.2.1 Property Based Deserialization Selection
 Below is an example of a scheme having a single property holding a `BigInt`:
