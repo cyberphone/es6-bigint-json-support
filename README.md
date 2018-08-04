@@ -132,7 +132,8 @@ Expected result: `'{"big":"555555555555555555555555555555","small":55}'`
 // Browser specific solution
 function hex2bin(c) {
   return c - (c < 58 ? 48 : 87);
-};
+}
+
 BigInt.prototype.toJSON = function() {
 
   let v = this.valueOf();
