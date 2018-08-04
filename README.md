@@ -135,7 +135,6 @@ function hex2bin(c) {
 
 // Browser specific solution
 BigInt.prototype.toJSON = function() {
-
   let v = this.valueOf();
   let sign = false;
   if (v < 0) {
