@@ -44,7 +44,7 @@ including when only supplied as a "polyfill".
   <tr><td><code>JSONNumber(</code><i>string</i><code>)</code></td><td>Constructor.  The <i>string</i> argument is
     supposed to<br>
     already be in proper JSON Number notation</td></tr>
-  <tr><td><code>JSONNumber.prototype.toString()</code></td><td>Get <i>string</i> value</td></tr>
+  <tr><td><code>JSONNumber.prototype.toString()</code></td><td>Return <i>string</i> value</td></tr>
   <tr><td><code>JSONNumber.prototype.isInteger()</code></td><td>Return <b>true</b> for integer syntax</td></tr>
   <tr><td><code>JSONNumber.prototype.isPositive()</code></td><td>Return <b>true</b> for positive number</td></tr>
   <tr><td><code>JSONNumber.prototype.isNumber()</code></td><td>Return <b>true</b> if fitting an in ES <code>Number</code></td></tr>
