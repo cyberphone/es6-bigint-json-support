@@ -131,12 +131,11 @@ Expected result: `'{"big":"555555555555555555555555555555","small":55}'`
 ### 3.1.2 Serialization Using Base64Url Encoded Data
  
 ```js
-function hex2bin(c) {
-  return c - (c < 58 ? 48 : 87);
-}
-
 // Browser specific solution
 BigInt.prototype.toJSON = function() {
+  function hex2bin(c) {
+    return c - (c < 58 ? 48 : 87); 
+  }
   let v = this.valueOf();
   let sign = false;
   if (v < 0) {
