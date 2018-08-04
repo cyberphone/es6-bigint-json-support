@@ -25,7 +25,7 @@ RFC mode denotes the number serialization scheme specified by the [JSON](https:/
 This proposal builds on the introduction of a new primitive type called `JSONNumber`, intended
 for serialization and deserialization of numeric data which cannot be represented by
 the ES6 `Number` type. `JSONNumber` is a thin wrapper holding a string in proper
-JSON Number notation.  The `typeof` operator recognizes `JSONNumber` as **"jsonnumber"**.
+[JSON Number notation](https://tools.ietf.org/html/rfc8259#section-6).  The `typeof` operator recognizes `JSONNumber` as **"jsonnumber"**.
 
 To enable the new functionality
 `JSON.stringify()` must be updated to recognize `JSONNumber` as a valid data type which always serializes
