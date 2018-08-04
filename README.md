@@ -42,9 +42,9 @@ including when only supplied as a "polyfill".
 <table>
   <tr><th>Method</th><th>Comment</th></tr>
   <tr><td><code>JSONNumber(</code><i>String</i><code>)</code></td><td>Constructor.  The <i>String</i> argument is
-    supposed to already<br>
-    be in proper JSON Number notation</td></tr>
-  <tr><td><code>JSONNumber.prototype.toString()</code></td><td>Get current value</td></tr>
+    supposed to<br>
+    already be in proper JSON Number notation</td></tr>
+  <tr><td><code>JSONNumber.prototype.toString()</code></td><td>Get <i>String</i> value</td></tr>
   <tr><td><code>JSONNumber.prototype.isInteger()</code></td><td>Return <b>true</b> for integer syntax</td></tr>
   <tr><td><code>JSONNumber.prototype.isPositive()</code></td><td>Return <b>true</b> for positive number</td></tr>
   <tr><td><code>JSONNumber.prototype.isNumber()</code></td><td>Return <b>true</b> if fitting an in ES <code>Number</code></td></tr>
