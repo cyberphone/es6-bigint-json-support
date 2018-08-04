@@ -248,9 +248,9 @@ for creating a `BigInt` value from a byte array in two-complement format like in
 https://docs.oracle.com/javase/8/docs/api/java/math/BigInteger.html#BigInteger-byte:A-
 
 # Summary Of Changes
-- Adding the `JSONNumber` primitive
+- Adding a `JSONNumber` primitive type
 - Enhancing `JSON.stringify()` to always accept `JSONNumber` for serialization
-- Adding an optional flag to `JSON.parse()` requiring the parser process to return `JSONNumber` instead of `Number`
+- Adding an optional flag to `JSON.parse()` requiring the parsing process to return `JSONNumber` instead of `Number`
 - _Optionally_ improving `BigInt` for dealing with two complement serialization formats 
 
 ### Aknowledgements
