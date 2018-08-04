@@ -130,10 +130,11 @@ Expected result: `'{"big":"555555555555555555555555555555","small":55}'`
  
 ```js
 // Browser specific solution
+function hex2bin(c) {
+  return c - (c < 58 ? 48 : 87);
+};
 BigInt.prototype.toJSON = function() {
-  hex2bin = function(c) {
-    return c - (c < 58 ? 48 : 87);
-  };
+
   let v = this.valueOf();
   let sign = false;
   if (v < 0) {
@@ -204,7 +205,7 @@ Expected result: `{big: 55n, small: 55}`
  
 ```js
 // Browser specific solution
-function base64Url2BigInt (b64) {
+function base64Url2BigInt(b64) {
   let dec = window.atob(b64.replace(/\-/g,'+').replace(/_/g,'/').replace(/=/g,'?'));
   let binary = new Uint8Array(dec.length);
   for (let q = 0; q < binary.length; q++) {
