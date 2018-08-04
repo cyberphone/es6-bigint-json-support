@@ -48,7 +48,7 @@ including when only supplied as a "polyfill".
     (=<i>string</i> contains no decimal point or exponent)</td></tr>
   <tr><td><code>JSONNumber.prototype.isPositive()</code></td><td>Returns <b>true</b> for positive numbers</td></tr>
   <tr><td><code>JSONNumber.prototype.isNumber()</code></td><td>Returns <b>true</b> if a converted <i>string</i> would
-    fit in an ES <code>Number</code> with respect to precision and range</td></tr>
+    be 100% compatible with an ES6 <code>Number</code> with respect to precision and range</td></tr>
 </table>
 
 _Question_: Since `JSONNumber` does not seem to have any logical use outside of the ES6 `JSON`object, would
