@@ -49,7 +49,7 @@ including when only supplied as a "polyfill".
 </table>
 
 _Question_: Since `JSONNumber` does not seem to have any logical use outside of the ES6 `JSON`object, would
-it be possible/useful making `JSONNumber` a member like `JSON.JSONNumber`?
+it be possible (and useful) making `JSONNumber` a member like `JSON.JSONNumber`?
 
 ## 2.1 RFC Mode Serialization
 The following code shows how RFC mode `BigInt` serialization can be added
