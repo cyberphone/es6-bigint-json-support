@@ -41,7 +41,9 @@ including when only supplied as a "polyfill".
 ### 2.1.1 Interface
 <table>
   <tr><th>Method</th><th>Comment</th></tr>
-  <tr><td><code>JSONNumber(</code><i>String</i><code>)</code></td><td>Constructor</td></tr>
+  <tr><td><code>JSONNumber(</code><i>String</i><code>)</code></td><td>Constructor.  The <i>String</i> argument is
+    supposed to already<br>
+    be in proper JSON Number notation</td></tr>
   <tr><td><code>JSONNumber.prototype.toString()</code></td><td>Get current value</td></tr>
   <tr><td><code>JSONNumber.prototype.isInteger()</code></td><td>True for integer syntax</td></tr>
   <tr><td><code>JSONNumber.prototype.isPositive()</code></td><td>True for positive number</td></tr>
