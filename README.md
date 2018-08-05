@@ -181,8 +181,7 @@ BigInt.prototype.toJSON = function() {
   for (q = 0; q < binary.length; q++) {
     text += String.fromCharCode(binary[q]);
   }
-  return window.btoa(text)
-    .replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'');
+  return window.btoa(text).replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'');
 }
 
 JSON.stringify({big: 555555555555555555555555555555n, small:55});
