@@ -4,7 +4,7 @@ no explicit support for using BigInt with the ES6 JSON object.
 This document contains a proposal for extending the ES6 platform to support BigInt both according to
 the JSON standard for numeric data, as well as existing practices relying on JSON strings.
 Since JSON do not distinguish between different numbers (aka weakly typed), the described deserialization
-schemes all presume that a JSON consumer honors the "contract" including serialization method used by the producer._
+schemes all presume that a JSON consumer honors an in advance known "contract" including serialization method used by the producer._
 
 Also see [summary of changes](#summary-of-changes).
 
