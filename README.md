@@ -43,8 +43,8 @@ including when only supplied as a "polyfill".
 ### 2.1.1 Interface
 <table>
   <tr><th>Method</th><th>Comment</th></tr>
-  <tr><td><code>JSONNumber(</code><i>string</i><code>)</code></td><td>Constructor.  The <i>string</i> argument is
-    supposed to already be in proper JSON&nbsp;Number notation</td></tr>
+  <tr><td><code>JSONNumber(</code><i>string</i><code>)</code></td><td>Constructor.  The <i>string</i> argument MUST
+    be in proper JSON&nbsp;Number notation</td></tr>
   <tr><td><code>JSONNumber.prototype.toString()</code></td><td>Returns <i>string</i> value</td></tr>
   <tr><td><code>JSONNumber.prototype.isInteger()</code></td><td>Returns <b>true</b> for integer syntax
     (=<i>string</i> contains no decimal point or exponent)</td></tr>
