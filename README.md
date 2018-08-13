@@ -147,16 +147,16 @@ BigInt.prototype.toJSON = function() {
   function hex2bin(c) {
     return c - (c < 58 ? 48 : 87); 
   }
-  let v = this.valueOf();
+  let value = this.valueOf();
   let sign = false;
-  if (v < 0) {
-    v = -v;
+  if (value < 0) {
+    value = -value;
     sign = true;
   }
-  let hex = v.toString(16);
+  let hex = value.toString(16);
   if (hex.length & 1) hex = '0' + hex;
   let binary = new Uint8Array(hex.length / 2);
-  let i = binary.length;
+  let j = binary.length;
   let q = hex.length;
   let carry = 1;
   while(q > 0) {
@@ -169,7 +169,7 @@ BigInt.prototype.toJSON = function() {
          carry = 0;
        }
      }
-     binary[--i] = byte;
+     binary[--j] = byte;
   }
   if (sign ^ (binary[0] > 127)) {
     let binp1 = new Uint8Array(binary.length + 1);
@@ -180,8 +180,8 @@ BigInt.prototype.toJSON = function() {
     binary = binp1;
   }
   let text = '';
-  for (q = 0; q < binary.length; q++) {
-    text += String.fromCharCode(binary[q]);
+  for (let i = 0; i < binary.length; i++) {
+    text += String.fromCharCode(binary[i]);
   }
   return window.btoa(text).replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'');
 }
