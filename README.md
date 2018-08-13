@@ -6,6 +6,8 @@ the JSON standard for numeric data, as well as existing practices relying on JSO
 Since JSON do not distinguish between different numbers (aka weakly typed), the described deserialization
 schemes all presume that a JSON consumer honors an in advance known "contract" including serialization method used by the producer._
 
+Related issue: https://github.com/tc39/proposal-bigint/issues/162
+
 Also see [summary of changes](#summary-of-changes).
 
 # 1 Default Mode
@@ -265,9 +267,21 @@ https://docs.oracle.com/javase/8/docs/api/java/math/BigInteger.html#BigInteger-b
 
 ### Aknowledgements
 This specification was influenced by input from many persons including
-Richard Gibson, Kai Zhu, Jordan Harband, Rob Ede, T.J. Crowder, Daniel Ehrenberg,
-Michael Theriot, Claude Pache, Ranando King, J Decker, Kevin Gibbons,
-Claude Petit, Jakob Kummerow and Isiah Meadows.
+T.J. Crowder,
+J Decker,
+Rob Ede,
+Daniel Ehrenberg,
+Kevin Gibbons,
+Richard Gibson,
+Jordan Harband,
+Ranando King,
+Jakob Kummerow,
+Isiah Meadows,
+Claude Pache,
+Claude Petit,
+Michael Theriot
+and
+Kai Zhu.
 
 ### Current Version
 0.1
