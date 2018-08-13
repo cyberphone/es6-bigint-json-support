@@ -53,7 +53,7 @@ including when only supplied as a "polyfill".
     be 100% compatible with an ES6 <code>Number</code> with respect to precision and range</td></tr>
 </table>
 
-_Question_: Since `JSONNumber` does not seem to have any logical use outside of the ES6 `JSON`object, would
+_Question_: Since `JSONNumber` does not seem to have any use except for operations related to the ES6 `JSON`object, would
 it be possible (and useful) making `JSONNumber` a member like `JSON.JSONNumber`?
 
 ## 2.1 RFC Mode Serialization
