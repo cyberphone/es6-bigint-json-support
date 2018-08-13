@@ -217,10 +217,10 @@ Expected result: `{big: 55n, small: 55}`
 ```js
 // Browser specific solution
 function base64Url2BigInt(b64) {
-  let dec = window.atob(b64.replace(/\-/g,'+').replace(/_/g,'/').replace(/=/g,'?'));
-  let binary = new Uint8Array(dec.length);
-  for (let q = 0; q < binary.length; q++) {
-    binary[q] = dec.charCodeAt(q);
+  let charbin = window.atob(b64.replace(/\-/g,'+').replace(/_/g,'/').replace(/=/g,'?'));
+  let binary = new Uint8Array(charbin.length);
+  for (let i = 0; i < binary.length; i++) {
+    binary[i] = charbin.charCodeAt(i);
   }
   let sign = false;
   if (binary[0] > 127) {
@@ -237,15 +237,12 @@ function base64Url2BigInt(b64) {
       }
     }
   }
-  let v = BigInt(0n);
-  for (let q = 0; q < binary.length; q++) {
-    v *= 256n;
-    v += BigInt(binary[q]);
+  let value = BigInt(0n);
+  for (let i = 0; i < binary.length; i++) {
+    value *= 256n;
+    value += BigInt(binary[i]);
   }
-  if (sign) {
-     return -v;
-  }
-  return v;
+  return sign ? -value : value;
 }
 
 JSON.parse('{"big":"BwMYyOV8edmCI4444w","small":55}', 
