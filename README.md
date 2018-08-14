@@ -49,8 +49,8 @@ including when only supplied as a "polyfill".
   <tr><td><code>JSONNumber.prototype.isInteger()</code></td><td>Returns <b>true</b> for integer syntax
     (=<i>string</i> contains no decimal point or exponent)</td></tr>
   <tr><td><code>JSONNumber.prototype.isPositive()</code></td><td>Returns <b>true</b> for positive numbers</td></tr>
-  <tr><td><code>JSONNumber.prototype.isNumber()</code></td><td>Returns 
-    <i>string</i><code> == new Number(</code><i>string</i><code>).toString()</code></td></tr>
+  <tr><td><code>JSONNumber.prototype.isNumber()</code></td><td>Returns <b>true</b> if a converted <i>string</i> would
+    be 100% compatible with an ES6 <code>Number</code> with respect to precision and range</td></tr>
 </table>
 
 _Question_: Since `JSONNumber` does not seem to have any use except for operations related to the ES6 `JSON`object, would
@@ -78,7 +78,7 @@ The selections are either managed through the `JSON.parse()` `reviver` option
 or are performed after parsing has completed.
 
 **NOTE:** RFC mode deserialization requires a new _optional_ flag to `JSON.parse()`.  When this flag is set to **true**,
-JSON Number elements must _only be parsed for correctness with respect to syntax_, while the
+JSON Number elements must only be parsed for correctness with respect to syntax, while the
 parsed string itself is returned in a `JSONNumber` for application level processing.
 
 ### 2.2.1 Property Based Deserialization Selection
@@ -276,8 +276,7 @@ Jakob Kummerow,
 Isiah Meadows,
 Claude Pache,
 Claude Petit,
-Michael Theriot,
-Michał Wadas
+Michael Theriot
 and
 Kai Zhu.
 
