@@ -125,7 +125,7 @@ on `BigInt` objects being represented as JSON Strings.  Unfortunately this pract
 making a standard solution out of reach, or at least not particularly useful. However, there is
 no real problem to solve either since _the ES6 JSON API as it stands can cope with any variant_.
  
-## 3.1 Quoted String Serialization
+## 3.1 Quoted String Mode Serialization
 Here follows a few examples on how to deal with quoted string serialization for `BigInt`.
  
 ### 3.1.1 Serialization Using Decimal Digits
@@ -194,7 +194,7 @@ Expected result: `'{"big":"BwMYyOV8edmCI4444w","small":55}'`
 a byte array in two-complement format like in Java:
 https://docs.oracle.com/javase/8/docs/api/java/math/BigInteger.html#toByteArray--
 
-## 3.2 Quoted String Deserialization
+## 3.2 Quoted String Mode Deserialization
 
 Since the is no generally accepted method for adding type information to data embedded in strings,
 the selection of encoding method is effectively left to the developers of the actual JSON
