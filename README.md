@@ -174,8 +174,8 @@ BigInt.prototype.toJSON = function() {
   if (sign ^ (binary[0] > 127)) {
     let binp1 = new Uint8Array(binary.length + 1);
     binp1[0] = sign ? 255 : 0;
-    for (q = 0; q < binary.length; q++) {
-      binp1[q + 1] = binary[q];
+    for (let i = 0; i < binary.length; i++) {
+      binp1[i + 1] = binary[i];
     }
     binary = binp1;
   }
