@@ -78,7 +78,7 @@ The selections are either managed through the `JSON.parse()` `reviver` option
 or are performed after parsing has completed.
 
 **NOTE:** RFC mode deserialization requires a new _optional_ flag to `JSON.parse()`.  When this flag is set to **true**,
-JSON Number elements must only be parsed for correctness with respect to syntax, while the
+JSON Number elements _must only be parsed for correctness with respect to syntax_, while the
 parsed string itself is returned in a `JSONNumber` for application level processing.
 
 ### 2.2.1 Property Based Deserialization Selection
@@ -276,7 +276,8 @@ Jakob Kummerow,
 Isiah Meadows,
 Claude Pache,
 Claude Petit,
-Michael Theriot
+Michael Theriot,
+Michał Wadas
 and
 Kai Zhu.
 
